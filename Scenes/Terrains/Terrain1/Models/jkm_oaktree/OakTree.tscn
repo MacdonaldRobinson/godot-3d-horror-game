@@ -27,6 +27,9 @@ mesh = ExtResource( 3 )
 material/0 = SubResource( 1 )
 material/1 = SubResource( 2 )
 material/2 = SubResource( 3 )
+__meta__ = {
+"apply_volumetrics": false
+}
 
 [node name="StaticBody" type="StaticBody" parent="oak"]
 

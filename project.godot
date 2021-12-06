@@ -76,6 +76,10 @@ config/icon="res://icon.png"
 
 VolumetricServer="*res://addons/silicon.vfx.volumetrics/volumetric_server.gd"
 
+[display]
+
+window/size/always_on_top=true
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/silicon.vfx.volumetrics/plugin.cfg", "res://addons/waterways/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg", "res://addons/zylann.scatter/plugin.cfg" )
