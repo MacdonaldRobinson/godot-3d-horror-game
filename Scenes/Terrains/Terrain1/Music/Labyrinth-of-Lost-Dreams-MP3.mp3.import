@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Labyrinth-of-Lost-Dreams-MP3.mp3-8cc8e600bbfdd6a940b4b9d60c8432ea.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Terrains/Terrain1/Music/Labyrinth-of-Lost-Dreams-MP3.mp3"
+dest_files=[ "res://.import/Labyrinth-of-Lost-Dreams-MP3.mp3-8cc8e600bbfdd6a940b4b9d60c8432ea.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

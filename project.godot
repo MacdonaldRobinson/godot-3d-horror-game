@@ -1,0 +1,136 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "FrustumAABBIntersection",
+"language": "GDScript",
+"path": "res://addons/silicon.vfx.volumetrics/utilities/frustum_aabb_intersection.gd"
+}, {
+"base": "ResourceFormatLoader",
+"class": "HTerrainDataLoader",
+"language": "GDScript",
+"path": "res://addons/zylann.hterrain/hterrain_resource_loader.gd"
+}, {
+"base": "ResourceFormatSaver",
+"class": "HTerrainDataSaver",
+"language": "GDScript",
+"path": "res://addons/zylann.hterrain/hterrain_resource_saver.gd"
+}, {
+"base": "Reference",
+"class": "Halton",
+"language": "GDScript",
+"path": "res://addons/silicon.vfx.volumetrics/utilities/halton.gd"
+}, {
+"base": "Reference",
+"class": "Matrix4",
+"language": "GDScript",
+"path": "res://addons/silicon.vfx.volumetrics/utilities/matrix4.gd"
+}, {
+"base": "KinematicBody",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scenes/Player/Player.gd"
+}, {
+"base": "Node",
+"class": "SceneBounds",
+"language": "GDScript",
+"path": "res://addons/silicon.vfx.volumetrics/utilities/scene_bounds.gd"
+}, {
+"base": "ShaderMaterial",
+"class": "TransparentVolumeOverlay",
+"language": "GDScript",
+"path": "res://addons/silicon.vfx.volumetrics/material/transparent_volume_overlayer.gd"
+}, {
+"base": "Resource",
+"class": "VolumetricMaterial",
+"language": "GDScript",
+"path": "res://addons/silicon.vfx.volumetrics/material/volumetric_material.gd"
+} ]
+_global_script_class_icons={
+"FrustumAABBIntersection": "",
+"HTerrainDataLoader": "",
+"HTerrainDataSaver": "",
+"Halton": "",
+"Matrix4": "",
+"Player": "",
+"SceneBounds": "",
+"TransparentVolumeOverlay": "",
+"VolumetricMaterial": "res://addons/silicon.vfx.volumetrics/material/volumetric_material.svg"
+}
+
+[application]
+
+config/name="3d-horror-game"
+run/main_scene="res://Scenes/World.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+VolumetricServer="*res://addons/silicon.vfx.volumetrics/volumetric_server.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/silicon.vfx.volumetrics/plugin.cfg", "res://addons/waterways/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg", "res://addons/zylann.scatter/plugin.cfg" )
+
+[input]
+
+move_forwards={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
+ ]
+}
+move_backwards={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
+ ]
+}
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
+ ]
+}
+look_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":3,"axis_value":-1.0,"script":null)
+ ]
+}
+look_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":3,"axis_value":1.0,"script":null)
+ ]
+}
+look_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":2,"axis_value":-1.0,"script":null)
+ ]
+}
+look_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":2,"axis_value":1.0,"script":null)
+ ]
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

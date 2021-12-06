@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape" id=4]
+height = 2.0
+
+[sub_resource type="CapsuleMesh" id=5]
+mid_height = 2.0
+
+[sub_resource type="SphereMesh" id=6]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id=7]
+radius = 0.1
+mid_height = 0.2
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.70179, 0 )
+shape = SubResource( 4 )
+
+[node name="Body" type="MeshInstance" parent="CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 5 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="Neck" type="MeshInstance" parent="CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.48947e-08, -2.51169 )
+skeleton = NodePath("../Body")
+
+[node name="Head" type="MeshInstance" parent="CollisionShape/Neck"]
+mesh = SubResource( 6 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="Nose" type="MeshInstance" parent="CollisionShape/Neck/Head"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.485959, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="HeadRayCast" type="RayCast" parent="CollisionShape/Neck/Head"]
+enabled = true
+cast_to = Vector3( 0, 1, 0 )
+
+[node name="Camera" type="Camera" parent="CollisionShape/Neck/Head"]
+transform = Transform( -1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, 0.662555, -0.432697 )
+
+[node name="Position3D" type="Position3D" parent="CollisionShape/Neck/Head/Camera"]
+transform = Transform( -1, 1.91068e-15, -8.74228e-08, 8.74228e-08, 2.18557e-08, -1, 0, -0.5, -4.37114e-08, 0.491898, 0.506291, -0.185166 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="CollisionShape/Neck/Head/Camera/Position3D"]
+radius = 0.203
+
+[node name="SpotLight" type="SpotLight" parent="CollisionShape/Neck/Head/Camera/Position3D/CSGCylinder"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+spot_range = 30.0
+spot_angle = 30.0
