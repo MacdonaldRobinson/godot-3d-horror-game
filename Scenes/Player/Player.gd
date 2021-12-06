@@ -2,7 +2,7 @@ extends KinematicBody
 class_name Player
 
 var movement_vector:Vector3
-var speed:int = 5
+var speed:float = 2.5
 var mouse_sensitivity:float = 0.2
 	
 onready var neck:MeshInstance = $CollisionShape/Neck
