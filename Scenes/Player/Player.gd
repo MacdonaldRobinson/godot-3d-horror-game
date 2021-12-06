@@ -11,7 +11,8 @@ onready var body:MeshInstance = $CollisionShape/Body
 onready var head_raycast:RayCast = $CollisionShape/Neck/Head/HeadRayCast
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pass
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -26,8 +27,17 @@ func _input(event):
 		
 		head.rotation.x = clamp(head.rotation.x, deg2rad(-75), deg2rad(75))
 		neck.rotation.z = clamp(neck.rotation.z, deg2rad(-75), deg2rad(75))
-			
+	
+	
 func _process(delta):
+	
+	if Input.is_action_just_pressed("toggle_mouse_capture"):
+		print("ran")
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
 	var forward_back = Input.get_action_strength("move_forwards") - Input.get_action_strength("move_backwards")
 	var left_right = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	
